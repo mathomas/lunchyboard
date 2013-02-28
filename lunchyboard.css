@@ -1,0 +1,144 @@
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 200;
+    margin: 50px 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+h1 {
+    color: #add8e6;
+    font-size: 62pt;
+    margin-bottom: 0;
+}
+
+h2 {
+    color: #00008b;
+    font-size: 26pt;
+    margin-top: 0
+}
+
+input[type='button'] {
+    border-radius: 5px;
+    font-size: 12pt;
+    color: white;
+
+    background: rgb(130, 37, 217); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(130, 37, 217, 1)), color-stop(50%, rgba(142, 70, 214, 1)), color-stop(51%, rgba(107, 32, 188, 1)), color-stop(71%, rgba(110, 37, 187, 1)), color-stop(100%, rgba(108, 45, 185, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#8225d9', endColorstr = '#6c2db9', GradientType = 0); /* IE6-9 */
+}
+
+#admin input[type='button'] {
+    background: rgb(248, 80, 50); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(248, 80, 50, 1)), color-stop(50%, rgba(241, 111, 92, 1)), color-stop(51%, rgba(246, 41, 12, 1)), color-stop(71%, rgba(240, 47, 23, 1)), color-stop(100%, rgba(231, 56, 39, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f85032', endColorstr = '#e73827', GradientType = 0); /* IE6-9 */
+}
+
+#admin {
+    border-radius: 5px;
+    background-color: #e4e4e4;
+    margin: 150px 10px;
+    padding: 10px 10px;
+    text-align: right;
+}
+
+input[type='text'] {
+    border: 2px solid #a9a9a9;
+    border-radius: 5px;
+    font-size: 2em;
+}
+
+input.new_restaurant {
+    color: #ddd;
+}
+
+input.new_restaurant.typed {
+    color: black;
+}
+
+#outer {
+    width: 600px;
+    margin: 0 auto;
+}
+
+.restaurant {
+    vertical-align: middle;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 5px;
+    color: #87ceeb;
+}
+
+.restaurant.selected {
+    color: black;
+    border-radius: 5px;
+    background-color: #add8e6;
+}
+
+.restaurant .name {
+    display: inline-block;
+    width: 400px;
+}
+
+.restaurant .score {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.deleter {
+    cursor: pointer;
+    width: 60px;
+    text-align: right;
+    font-family: Helvetica, sans-serif;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+    padding-bottom: 10px;
+}
+
+.deleter:hover {
+    font-weight: bold;
+}
+
+.details, .none {
+    font-weight: bold;
+    font-size: 2em;
+    border: 4px none #ccc;
+    border-top-style: dashed;
+    margin: 50px 10px;
+    padding: 10px 0;
+}
+
+.clear {
+    margin: 50px 10px;
+    padding: 10px 0;
+}
+
+.none {
+    color: #777;
+}
+
+.inc {
+    cursor: pointer;
+}

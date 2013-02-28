@@ -1,0 +1,63 @@
+<head>
+    <title>Lunchyboard</title>
+</head>
+
+<body>
+
+<div id="outer">
+    <h1>Lunchyboard</h1>
+
+    <h2>Where do you want to go today?</h2>
+
+    {{> lunchyboard}}
+</div>
+</body>
+
+
+<template name="lunchyboard">
+    <div class="lunchyboard">
+        {{#each restaurants}}
+        {{> restaurant}}
+        {{/each}}
+    </div>
+
+    {{>new_restaurant}}
+
+    {{#if selected_name}}
+    <div class="details">
+        <div class="name">Vote for: {{selected_name}}</div>
+        <input type="button" class="inc5" value="I'm Dying to Go"/>
+        <input type="button" class="inc3" value="I'd Like to Go"/>
+        <input type="button" class="inc1" value="I Wouldn't Mind Going"/>
+    </div>
+    {{/if}}
+
+    {{#if any_restaurants}}
+        {{#unless selected_name}}
+            <div class="none">Click on a restaurant, then vote.</div>
+        {{/unless}}
+    {{else}}
+        <div class="none">Start adding restaurants!</div>
+    {{/if}}
+
+    <div id="admin">
+        <input type="button" class="clearScores" value="New Occasion"/>
+        <input type="button" class="clearAll" value="Start From Scratch"/>
+    </div>
+</template>
+
+
+<template name="restaurant">
+    <div class="restaurant {{selected}}">
+        <span class="name">{{name}}</span>
+        <span class="score">{{score}}</span>
+        <span class="deleter">&#215;</span>
+    </div>
+</template>
+
+<template name="new_restaurant">
+    <div class="new_restaurant">
+        <input type="text" class="new_restaurant" maxlength="100" value="Enter a Restaurant"/>
+    </div>
+</template>
+
