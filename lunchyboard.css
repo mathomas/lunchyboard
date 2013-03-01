@@ -26,9 +26,74 @@ h2 {
     margin-top: 0
 }
 
-input[type='button'] {
+.restaurant {
+    vertical-align: middle;
+    font-size: 2em;
+    cursor: pointer;
+    padding: 5px;
+    color: #87ceeb;
+}
+
+.restaurant.selected {
+    color: black;
     border-radius: 5px;
-    font-size: 12pt;
+    background-color: #add8e6;
+}
+
+.restaurant .name {
+    display: inline-block;
+    width: 600px;
+}
+
+.restaurant .score {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.deleter {
+    cursor: pointer;
+    width: 60px;
+    text-align: right;
+    font-family: Helvetica, sans-serif;
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #999;
+    padding-bottom: 10px;
+}
+
+.deleter:hover {
+    font-weight: bold;
+}
+
+#outer {
+    width: 850px;
+    margin: 0 auto;
+}
+
+
+input[type='text'] {
+    border: 2px solid #a9a9a9;
+    border-radius: 5px;
+    font-size: 2em;
+}
+
+input.new_restaurant {
+    color: #ddd;
+}
+
+input.new_restaurant.typed {
+    color: black;
+}
+
+
+input[type='button'] {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    font-size: 20pt;
     color: white;
 
     background: rgb(130, 37, 217); /* Old browsers */
@@ -58,67 +123,6 @@ input[type='button'] {
     margin: 150px 10px;
     padding: 10px 10px;
     text-align: right;
-}
-
-input[type='text'] {
-    border: 2px solid #a9a9a9;
-    border-radius: 5px;
-    font-size: 2em;
-}
-
-input.new_restaurant {
-    color: #ddd;
-}
-
-input.new_restaurant.typed {
-    color: black;
-}
-
-#outer {
-    width: 600px;
-    margin: 0 auto;
-}
-
-.restaurant {
-    vertical-align: middle;
-    font-size: 2em;
-    cursor: pointer;
-    padding: 5px;
-    color: #87ceeb;
-}
-
-.restaurant.selected {
-    color: black;
-    border-radius: 5px;
-    background-color: #add8e6;
-}
-
-.restaurant .name {
-    display: inline-block;
-    width: 400px;
-}
-
-.restaurant .score {
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-    font-weight: bold;
-}
-
-.deleter {
-    cursor: pointer;
-    width: 60px;
-    text-align: right;
-    font-family: Helvetica, sans-serif;
-    font-size: 20px;
-    display: inline-block;
-    vertical-align: middle;
-    color: #999;
-    padding-bottom: 10px;
-}
-
-.deleter:hover {
-    font-weight: bold;
 }
 
 .details, .none {
