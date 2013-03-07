@@ -24,6 +24,7 @@ Occasion = {
             var id = Occasions.insert({name:textbox.value});
             Occasion.set(id);
         }
+        Session.set("selected_restaurant", undefined);
     },
     current:function () {
         return Session.get("selected_occasion");
@@ -32,6 +33,7 @@ Occasion = {
         Session.set("selected_occasion", occasion_id);
     }
 };
+
 
 Restaurant = {
     addRestaurant:function (evt) {
@@ -130,6 +132,9 @@ if (Meteor.isClient) {
         },
         'click input.inc1':function () {
             Restaurant.incrementBy(1);
+        },
+        'click input.newOccasion':function () {
+            Occasion.set(undefined);
         },
         'click input.clearScores':function () {
             Restaurants.update({}, {$set:{score:0}}, {multi:true});

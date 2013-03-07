@@ -26,11 +26,23 @@ h2 {
     margin-top: 0
 }
 
-.share, .share input[type='text'] {
-    font-size: 1em;
+
+.share {
     font-weight: bold;
-    cursor: pointer;
     text-align: right;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: right;
+}
+
+.share input[type='text'] {
+    font-size: .75em;
+}
+
+
+span.occasion {
+    font-style: italic;
 }
 
 .occasion_form {
@@ -95,7 +107,6 @@ h2 {
     margin: 0 auto;
 }
 
-
 input[type='text'] {
     border: 2px solid #a9a9a9;
     border-radius: 5px;
@@ -110,7 +121,6 @@ input.typeover {
 input.typeover.typed {
     color: black;
 }
-
 
 input[type='button'] {
     padding-left: 20px;

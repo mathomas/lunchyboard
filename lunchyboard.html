@@ -8,12 +8,13 @@
 <template name="outer">
     <div id="outer">
         {{#if occasion}}
-            <div class="share">Share<br>
-                <input type="text" value="" size="55" style="display: none;"/>
+            <div class="share">
+                Share<br>
+                <input type="text" value="" size="58" disabled style="display: none;"/>
             </div>
             <h1>Lunchyboard</h1>
         {{#with occasion}}
-            <h2>Where do you want to go for {{name}}?</h2>
+            <h2>Where do you want to go for <span class="occasion">{{name}}</span>?</h2>
             {{/with}}
             {{> lunchyboard}}
         {{else}}
@@ -50,8 +51,9 @@
     {{/if}}
 
     <div id="admin">
-        <input type="button" class="clearScores" value="Clear Votes"/>
-        <input type="button" class="clearAll" value="Start From Scratch"/>
+        <input type="button" class="newOccasion" value="New Occasion"/>
+        <!--<input type="button" class="clearScores" value="Clear Votes"/>-->
+        <!--<input type="button" class="clearAll" value="Start From Scratch"/>-->
     </div>
 </template>
 
