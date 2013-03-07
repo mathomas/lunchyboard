@@ -1,17 +1,26 @@
 <head>
     <title>Lunchyboard</title>
 </head>
-
 <body>
-
-<div id="outer">
-    <h1>Lunchyboard</h1>
-
-    <h2>Where do you want to go today?</h2>
-
-    {{> lunchyboard}}
-</div>
+{{> outer}}
 </body>
+
+<template name="outer">
+    <div id="outer">
+        {{#if occasion}}
+            <div class="share">Share<br>
+                <input type="text" value="" size="55" style="display: none;"/>
+            </div>
+            <h1>Lunchyboard</h1>
+        {{#with occasion}}
+            <h2>Where do you want to go for {{name}}?</h2>
+            {{/with}}
+            {{> lunchyboard}}
+        {{else}}
+            {{> occasion_form}}
+        {{/if}}
+    </div>
+</template>
 
 
 <template name="lunchyboard">
@@ -24,12 +33,12 @@
     {{>new_restaurant}}
 
     {{#if selected_name}}
-    <div class="details">
-        <div class="name">Vote for: {{selected_name}}</div>
-        <input type="button" class="inc5" value="I'm Dying to Go"/>
-        <input type="button" class="inc3" value="I'd Like to Go"/>
-        <input type="button" class="inc1" value="I Wouldn't Mind Going"/>
-    </div>
+        <div class="details">
+            <div class="name">Vote for: {{selected_name}}</div>
+            <input type="button" class="inc5" value="I'm Dying to Go"/>
+            <input type="button" class="inc3" value="I'd Like to Go"/>
+            <input type="button" class="inc1" value="I Wouldn't Mind Going"/>
+        </div>
     {{/if}}
 
     {{#if any_restaurants}}
@@ -41,7 +50,7 @@
     {{/if}}
 
     <div id="admin">
-        <input type="button" class="clearScores" value="New Occasion"/>
+        <input type="button" class="clearScores" value="Clear Votes"/>
         <input type="button" class="clearAll" value="Start From Scratch"/>
     </div>
 </template>
@@ -57,7 +66,15 @@
 
 <template name="new_restaurant">
     <div class="new_restaurant">
-        <input type="text" class="new_restaurant" maxlength="100" value="Enter a Restaurant"/>
+        <input type="text" class="new_restaurant typeover" maxlength="100" value="Enter a Restaurant"/>
     </div>
 </template>
+
+<template name="occasion_form">
+    <div class="occasion_form">
+            <input type="text" class="new_occasion typeover" maxlength="100" value="Enter an Occasion"/><br/>
+            (and hit Enter)
+    </div>
+</template>
+
 

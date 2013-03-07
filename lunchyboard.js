@@ -2,16 +2,74 @@
 // it is backed by a MongoDB collection named "restaurants".
 
 Restaurants = new Meteor.Collection("restaurants");
+Occasions = new Meteor.Collection("occasions");
 
-Helpers = {
+Util = {
+    getPath:function () {
+        return location.toString().split('/')[3];
+    }
+};
+
+UI = {
+    handleTyping:function (evt) {
+        $(evt.target).addClass('typed').val('');
+    }
+};
+
+
+Occasion = {
+    addOccasion:function (evt) {
+        var textbox = evt.currentTarget;
+        if (textbox.value.length > 0) {
+            var id = Occasions.insert({name:textbox.value});
+            Occasion.set(id);
+        }
+    },
+    current:function () {
+        return Session.get("selected_occasion");
+    },
+    set:function(occasion_id) {
+        Session.set("selected_occasion", occasion_id);
+    }
+};
+
+Restaurant = {
+    addRestaurant:function (evt) {
+        var textbox = evt.currentTarget;
+        if (textbox.value.length > 0) {
+            var id = Restaurants.insert({name:textbox.value, score:0, occasion:Occasion.current()});
+            Session.set("selected_restaurant", id);
+        }
+    },
     incrementBy:function (amount) {
         Restaurants.update(Session.get("selected_restaurant"), {$inc:{score:amount}});
+    },
+    deleteRestaurant:function (evt) {
+        var row = $(evt.target).parent();
+        var score = row.children(".score")[0];
+        if (score.innerHTML === "0") {
+            evt.stopPropagation();
+            var that = this;
+            row.fadeOut(500, function () {
+                Restaurants.remove({_id:that._id});
+            });
+        } else { // disallow deletion, and show why
+            evt.stopPropagation();
+            $(score).fadeOut(150).fadeIn(150).fadeOut(150).fadeIn(150);
+        }
     }
 };
 
 if (Meteor.isClient) {
+    Meteor.startup(function () {
+        var occasion_id = Util.getPath();
+        if (occasion_id != null) {
+            Occasion.set(occasion_id);
+        }
+    });
+
     Template.lunchyboard.restaurants = function () {
-        return Restaurants.find({}, {sort:{score:-1, name:1}});
+        return Restaurants.find({occasion:Occasion.current()}, {sort:{score:-1, name:1}});
     };
 
     Template.lunchyboard.selected_name = function () {
@@ -27,22 +85,56 @@ if (Meteor.isClient) {
         return Session.equals("selected_restaurant", this._id) ? "selected" : '';
     };
 
+    Template.outer.occasion = function () {
+        return Occasions.findOne(Occasion.current());
+    };
+
+
+    Template.outer.share_url = function () {
+        if (location.toString().indexOf(Occasion.current()) > -1) {
+            return location;
+        } else {
+            return location + Occasion.current();
+        }
+    };
+
+    Template.outer.events({
+        'click .share':function (evt) {
+            var elem = $(".share input");
+            elem.slideDown(function() {
+                elem.attr("value", Template.outer.share_url());
+            });
+        }
+    });
+
+
+    Template.occasion_form.events({
+        'click input.typeover, focus  input.typeover':function (evt) {
+            UI.handleTyping(evt);
+        },
+        'keypress input.new_occasion':function (evt) {
+            if (evt.keyCode == 13) { // Enter
+                Occasion.addOccasion(evt);
+            }
+        }
+    });
+
 
     Template.lunchyboard.events({
         'click input.inc5':function () {
-            Helpers.incrementBy(5);
+            Restaurant.incrementBy(5);
         },
         'click input.inc3':function () {
-            Helpers.incrementBy(3);
+            Restaurant.incrementBy(3);
         },
         'click input.inc1':function () {
-            Helpers.incrementBy(1);
+            Restaurant.incrementBy(1);
         },
         'click input.clearScores':function () {
             Restaurants.update({}, {$set:{score:0}}, {multi:true});
         },
         'click input.clearAll':function () {
-            $(".restaurant").fadeOut(500, function() {
+            $(".restaurant").fadeOut(500, function () {
                 Restaurants.remove({});
             })
         }
@@ -50,8 +142,8 @@ if (Meteor.isClient) {
 
 
     Template.new_restaurant.events({
-        'click, focus input':function (evt) {
-            $(evt.target).addClass('typed').val('');
+        'click input.typeover, focus  input.typeover':function (evt) {
+            UI.handleTyping(evt);
         }
     });
 
@@ -60,48 +152,21 @@ if (Meteor.isClient) {
             Session.set("selected_restaurant", this._id);
         },
         'click .deleter':function (evt) {
-            var row = $(evt.target).parent();
-            var score = row.children(".score")[0];
-            if (score.innerHTML === "0") {
-                evt.stopPropagation();
-                var that = this;
-                row.fadeOut(500, function () {
-                    Restaurants.remove({_id:that._id});
-                });
-            } else {
-                evt.stopPropagation();
-                $(score).fadeOut(150).fadeIn(150).fadeOut(150).fadeIn(150);
-            }
+            Restaurant.deleteRestaurant.call(this, evt);
         }
     });
 
     Template.new_restaurant.events({
         'keypress input.new_restaurant':function (evt) {
             if (evt.keyCode == 13) { // Enter
-                var textbox = evt.currentTarget;
-                if (textbox.value.length > 0) {
-                    var id = Restaurants.insert({name:textbox.value, score:0});
-                    textbox.value = "";
-                    Session.set("selected_restaurant", id);
-                }
+                Restaurant.addRestaurant(evt);
             }
         }
     });
 }
 
 
-// On server startup, create some restaurants if the database is empty.
 if (Meteor.isServer) {
     Meteor.startup(function () {
-//        if (Restaurants.find().count() === 0) {
-//            var names = ["The Tavern",
-//                "The Tilted Kilt",
-//                "Tuk Tuk Thai",
-//                "Slattery's",
-//                "La Fogata",
-//                "Elephant Bar"];
-//            for (var i = 0; i < names.length; i++)
-//                Restaurants.insert({name:names[i], score:0});
-//        }
     });
 }

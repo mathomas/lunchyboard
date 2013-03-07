@@ -26,6 +26,28 @@ h2 {
     margin-top: 0
 }
 
+.share, .share input[type='text'] {
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: right;
+}
+
+.occasion_form {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 150px;
+    margin: auto;
+    border: 5px solid #add8e6;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 16px;
+    height: 75px;
+    width: 400px;
+    text-align: center;
+}
+
 .restaurant {
     vertical-align: middle;
     font-size: 2em;
@@ -80,11 +102,12 @@ input[type='text'] {
     font-size: 2em;
 }
 
-input.new_restaurant {
+input.typeover {
+    border: 2px solid #a9a9a9;
     color: #ddd;
 }
 
-input.new_restaurant.typed {
+input.typeover.typed {
     color: black;
 }
 
