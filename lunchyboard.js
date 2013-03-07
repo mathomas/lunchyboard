@@ -100,9 +100,10 @@ if (Meteor.isClient) {
 
     Template.outer.events({
         'click .share':function (evt) {
-            var elem = $(".share input");
-            elem.slideDown(function() {
-                elem.attr("value", Template.outer.share_url());
+            var $e = $(".share input");
+            $e.slideDown(function() {
+                $e.attr("value", Template.outer.share_url());
+                $e.select();
             });
         }
     });
