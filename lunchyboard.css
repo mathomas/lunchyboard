@@ -39,6 +39,12 @@ h2 {
     text-align: right;
 }
 
+.share.clicked {
+    color: #aaa;
+    text-decoration: none;
+    cursor: text;
+}
+
 .share input[type='text'] {
     font-size: .75em;
 }
@@ -54,13 +60,22 @@ span.occasion {
     left: 0;
     top: 150px;
     margin: auto;
+    text-align: center;
+    height: 75px;
+    width: 400px;
+}
+
+.occasion_form .input {
     border: 5px solid #add8e6;
     border-radius: 15px;
     padding: 15px;
     font-size: 16px;
-    height: 75px;
-    width: 400px;
-    text-align: center;
+}
+
+.occasion_form .title {
+    font-family: Georgia, serif;
+    font-size: 4em;
+    color: #add8e6;
 }
 
 .restaurant {

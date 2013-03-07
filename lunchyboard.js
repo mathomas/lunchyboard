@@ -65,8 +65,10 @@ Restaurant = {
 if (Meteor.isClient) {
     Meteor.startup(function () {
         var occasion_id = Util.getPath();
-        if (occasion_id != null) {
+        if (occasion_id) {
             Occasion.set(occasion_id);
+        } else {
+            $(".occasion_form").fadeIn();
         }
     });
 
@@ -107,6 +109,7 @@ if (Meteor.isClient) {
                 $e.attr("value", Template.outer.share_url());
                 $e.select();
             });
+            $(evt.target).addClass("clicked");
         }
     });
 
