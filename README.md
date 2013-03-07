@@ -1,1 +1,1 @@
-Just a simple little lunch-location voting application, written in Meteor.
+Just a simple little lunch (or whatever occasion) location voting application, written in Meteor.
