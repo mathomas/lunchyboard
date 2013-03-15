@@ -29,7 +29,7 @@ Occasion = {
         }
         Restaurant.setCurrent(undefined);
     },
-    current:function () {
+    getCurrent:function () {
         return Session.get("selected_occasion");
     },
     setCurrent:function(occasion_id) {
@@ -42,7 +42,7 @@ Restaurant = {
     addRestaurant:function (evt) {
         var textbox = evt.currentTarget;
         if (textbox.value.length > 0) {
-            var id = Restaurants.insert({name:textbox.value, score:0, occasion:Occasion.current()});
+            var id = Restaurants.insert({name:textbox.value, score:0, occasion:Occasion.getCurrent()});
             Restaurant.setCurrent(id);
         }
     },
@@ -63,11 +63,11 @@ Restaurant = {
             $(score).fadeOut(150).fadeIn(150).fadeOut(150).fadeIn(150);
         }
     },
+    getCurrent:function() {
+        return Session.get("selected_restaurant")
+    },
     setCurrent:function(restaurant_id) {
         Session.set("selected_restaurant", restaurant_id)
-    },
-    getCurrent:function(restaurant_id) {
-        Session.get("selected_restaurant", restaurant_id)
     }
 };
 
@@ -82,11 +82,11 @@ if (Meteor.isClient) {
     });
 
     Template.lunchyboard.restaurants = function () {
-        return Restaurants.find({occasion:Occasion.current()}, {sort:{score:-1, name:1}});
+        return Restaurants.find({occasion:Occasion.getCurrent()}, {sort:{score:-1, name:1}});
     };
 
     Template.lunchyboard.selected_name = function () {
-        var restaurant = Restaurants.findOne(Session.getCurrent());
+        var restaurant = Restaurants.findOne(Restaurant.getCurrent());
         return restaurant && restaurant.name;
     };
 
@@ -99,15 +99,15 @@ if (Meteor.isClient) {
     };
 
     Template.outer.occasion = function () {
-        return Occasions.findOne(Occasion.current());
+        return Occasions.findOne(Occasion.getCurrent());
     };
 
 
     Template.outer.share_url = function () {
-        if (location.toString().indexOf(Occasion.current()) > -1) {
+        if (location.toString().indexOf(Occasion.getCurrent()) > -1) {
             return location;
         } else {
-            return location + Occasion.current();
+            return location + Occasion.getCurrent();
         }
     };
 
@@ -168,7 +168,7 @@ if (Meteor.isClient) {
 
     Template.restaurant.events({
         'click .restaurant':function () {
-            Session.setCurrent(this._id);
+            Restaurant.setCurrent(this._id);
         },
         'click .deleter':function (evt) {
             Restaurant.deleteRestaurant.call(this, evt);
