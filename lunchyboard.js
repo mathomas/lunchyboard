@@ -7,6 +7,9 @@ Occasions = new Meteor.Collection("occasions");
 Util = {
     getPath:function () {
         return location.toString().split('/')[3];
+    },
+    baseUrl:function() {
+        return window.location.protocol + "//" + window.location.host + "/";
     }
 };
 
@@ -138,6 +141,7 @@ if (Meteor.isClient) {
         },
         'click input.newOccasion':function () {
             Occasion.set(undefined);
+            window.location = Util.baseUrl();
         },
         'click input.clearScores':function () {
             Restaurants.update({}, {$set:{score:0}}, {multi:true});
