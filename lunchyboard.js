@@ -25,14 +25,14 @@ Occasion = {
         var textbox = evt.currentTarget;
         if (textbox.value.length > 0) {
             var id = Occasions.insert({name:textbox.value});
-            Occasion.set(id);
+            Occasion.setCurrent(id);
         }
-        Session.set("selected_restaurant", undefined);
+        Restaurant.setCurrent(undefined);
     },
     current:function () {
         return Session.get("selected_occasion");
     },
-    set:function(occasion_id) {
+    setCurrent:function(occasion_id) {
         Session.set("selected_occasion", occasion_id);
     }
 };
@@ -43,7 +43,7 @@ Restaurant = {
         var textbox = evt.currentTarget;
         if (textbox.value.length > 0) {
             var id = Restaurants.insert({name:textbox.value, score:0, occasion:Occasion.current()});
-            Session.set("selected_restaurant", id);
+            Restaurant.setCurrent(id);
         }
     },
     incrementBy:function (amount) {
@@ -62,6 +62,12 @@ Restaurant = {
             evt.stopPropagation();
             $(score).fadeOut(150).fadeIn(150).fadeOut(150).fadeIn(150);
         }
+    },
+    setCurrent:function(restaurant_id) {
+        Session.set("selected_restaurant", restaurant_id)
+    },
+    getCurrent:function(restaurant_id) {
+        Session.get("selected_restaurant", restaurant_id)
     }
 };
 
@@ -69,7 +75,7 @@ if (Meteor.isClient) {
     Meteor.startup(function () {
         var occasion_id = Util.getPath();
         if (occasion_id) {
-            Occasion.set(occasion_id);
+            Occasion.setCurrent(occasion_id);
         } else {
             $(".occasion_form").fadeIn();
         }
@@ -80,7 +86,7 @@ if (Meteor.isClient) {
     };
 
     Template.lunchyboard.selected_name = function () {
-        var restaurant = Restaurants.findOne(Session.get("selected_restaurant"));
+        var restaurant = Restaurants.findOne(Session.getCurrent());
         return restaurant && restaurant.name;
     };
 
@@ -140,7 +146,7 @@ if (Meteor.isClient) {
             Restaurant.incrementBy(1);
         },
         'click input.newOccasion':function () {
-            Occasion.set(undefined);
+            Occasion.setCurrent(undefined);
             window.location = Util.baseUrl();
         },
         'click input.clearScores':function () {
@@ -162,7 +168,7 @@ if (Meteor.isClient) {
 
     Template.restaurant.events({
         'click .restaurant':function () {
-            Session.set("selected_restaurant", this._id);
+            Session.setCurrent(this._id);
         },
         'click .deleter':function (evt) {
             Restaurant.deleteRestaurant.call(this, evt);
