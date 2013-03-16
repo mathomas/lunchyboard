@@ -5,18 +5,12 @@
 {{> outer}}
 </body>
 
+
 <template name="outer">
     <div id="outer">
         {{#if occasion}}
-            <div class="share">
-                Share<br>
-                <input type="text" readonly value="" size="58" style="display: none;"/>
-            </div>
-            <h1>Lunchyboard</h1>
-        {{#with occasion}}
-            <h2>Where do you want to go for <span class="occasion">{{name}}</span>?</h2>
-            {{/with}}
-            {{> lunchyboard}}
+            {{> share}}
+            {{> main_page}}
         {{else}}
             {{> occasion_form}}
         {{/if}}
@@ -24,56 +18,120 @@
 </template>
 
 
-<template name="lunchyboard">
-    <div class="lunchyboard">
-        {{#each restaurants}}
-        {{> restaurant}}
-        {{/each}}
+<template name="share">
+    <div class="row-fluid">
+        <div class="span1"></div>
+        <div class="span5"></div>
+        <div class="span5 share">
+            Share<br>
+            <input type="text" readonly value="" size="58" style="display: none;"/>
+        </div>
+        <div class="span1"></div>
     </div>
+</template>
+
+
+<template name="main_page">
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6">
+            <h1>Lunchyboard</h1>
+            {{#with occasion}}
+                <h2>Where do you want to go for <span class="occasion">{{name}}</span>?</h2>
+            {{/with}}
+        </div>
+        <div class="span3"></div>
+    </div>
+    {{> lunchyboard}}
+</template>
+
+
+<template name="lunchyboard">
+    {{#each restaurants}}
+        {{> restaurant}}
+    {{/each}}
 
     {{>new_restaurant}}
 
     {{#if selected_name}}
-        <div class="details">
-            <div class="name">Vote for: {{selected_name}}</div>
-            <input type="button" class="inc5" value="I'm Dying to Go"/>
-            <input type="button" class="inc3" value="I'd Like to Go"/>
-            <input type="button" class="inc1" value="I Wouldn't Mind Going"/>
+        {{> voting}}
+    {{/if}}
+
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6">
+            {{#if any_restaurants}}
+                {{#unless selected_name}}
+                    <div class="none">Click on a restaurant, then vote.</div>
+                {{/unless}}
+            {{else}}
+                <div class="none">Start adding restaurants!</div>
+            {{/if}}
         </div>
-    {{/if}}
+        <div class="span3"></div>
+    </div>
 
-    {{#if any_restaurants}}
-        {{#unless selected_name}}
-            <div class="none">Click on a restaurant, then vote.</div>
-        {{/unless}}
-    {{else}}
-        <div class="none">Start adding restaurants!</div>
-    {{/if}}
+    {{> admin}}
 
-    <div id="admin">
-        <input type="button" class="newOccasion" value="New Occasion"/>
-        <!--<input type="button" class="clearScores" value="Clear Votes"/>-->
-        <!--<input type="button" class="clearAll" value="Start From Scratch"/>-->
+</template>
+
+
+<template name="admin">
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div id="admin" class="span6">
+            <input type="button" class="btn newOccasion" value="New Occasion"/>
+            <!--<input type="button" class="clearScores" value="Clear Votes"/>-->
+            <!--<input type="button" class="clearAll" value="Start From Scratch"/>-->
+        </div>
+        <div class="span3"></div>
+    </div>
+</template>
+
+<template name="voting">
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6">
+            <div class="voting">
+                <div class="name">Vote for: {{selected_name}}</div>
+                <fieldset class="btn-group">
+                    <input type="button" class="btn inc5" value="I'm Dying to Go"/>
+                    <input type="button" class="btn inc3" value="I'd Like to Go"/>
+                    <input type="button" class="btn inc1" value="I Wouldn't Mind Going"/>
+                </fieldset>
+            </div>
+        </div>
+        <div class="span3"></div>
     </div>
 </template>
 
 
 <template name="restaurant">
-    <div class="restaurant {{selected}}">
-        <span class="name">{{name}}</span>
-        <span class="score">{{score}}</span>
-        <span class="deleter">&#215;</span>
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6 restaurant {{selected}}">
+            <span class="name">{{name}}</span>
+            <span class="deleter">&#215;</span>
+            <span class="score">{{score}}</span>
+        </div>
+        <div class="span3"></div>
     </div>
 </template>
 
 <template name="new_restaurant">
-    <div class="new_restaurant">
-        <input type="text" class="new_restaurant typeover" maxlength="100" value="Enter a Restaurant"/>
+    <div class="row-fluid">
+        <div class="span3"></div>
+        <div class="span6">
+            <div id="new_restaurant">
+                <input type="text" class="new_restaurant typeover" maxlength="100" value="Enter a Restaurant"/>
+            </div>
+        </div>
+        <div class="span3"></div>
     </div>
 </template>
 
 <template name="occasion_form">
-    <div class="occasion_form" style="display: none;" >
+    <div id="occasion_form" style="display: none;" >
         <div class="title">Lunchyboard</div>
         <div class="input">
             <input type="text" class="new_occasion typeover" maxlength="100" value="Enter an Occasion"/><br/>

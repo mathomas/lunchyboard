@@ -77,7 +77,7 @@ if (Meteor.isClient) {
         if (occasion_id) {
             Occasion.setCurrent(occasion_id);
         } else {
-            $(".occasion_form").fadeIn();
+            $("#occasion_form").fadeIn();
         }
     });
 
@@ -90,8 +90,12 @@ if (Meteor.isClient) {
         return restaurant && restaurant.name;
     };
 
+    Template.voting.selected_name = function () {
+        return Template.lunchyboard.selected_name();
+    };
+
     Template.lunchyboard.any_restaurants = function () {
-        return (Restaurants.find({}).count() > 0);
+        return Template.lunchyboard.restaurants().count() > 0;
     };
 
     Template.restaurant.selected = function () {
@@ -100,6 +104,10 @@ if (Meteor.isClient) {
 
     Template.outer.occasion = function () {
         return Occasions.findOne(Occasion.getCurrent());
+    };
+
+    Template.main_page.occasion = function () {
+        return Template.outer.occasion();
     };
 
 

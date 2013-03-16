@@ -1,34 +1,8 @@
+
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 200;
-    margin: 50px 0;
-    padding: 0;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
 }
 
-h1, h2 {
-    font-family: Georgia, serif;
-}
-
-h1 {
-    color: #add8e6;
-    font-size: 62pt;
-    margin-bottom: 0;
-}
-
-h2 {
-    color: #00008b;
-    font-size: 26pt;
-    margin-top: 0
-}
-
-.help {
-    color: #ccc;
-}
 
 .share {
     font-weight: bold;
@@ -39,6 +13,7 @@ h2 {
     text-align: right;
 }
 
+
 .share.clicked {
     color: #aaa;
     text-decoration: none;
@@ -46,37 +21,26 @@ h2 {
 }
 
 .share input[type='text'] {
-    font-size: .75em;
+    font-size: .80em;
 }
 
 
-span.occasion {
-    font-style: italic;
-}
-
-.occasion_form {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 150px;
-    margin: auto;
-    text-align: center;
-    height: 75px;
-    width: 400px;
-}
-
-.occasion_form .input {
-    border: 5px solid #add8e6;
-    border-radius: 15px;
-    padding: 15px;
-    font-size: 16px;
-}
-
-.occasion_form .title {
+h1, h2 {
     font-family: Georgia, serif;
-    font-size: 4em;
-    color: #add8e6;
 }
+
+h1 {
+    color: #add8e6;
+    font-size: 62pt;
+    margin-bottom: .25em;
+}
+
+h2 {
+    color: #00008b;
+    font-size: 26pt;
+    margin-top: 0;
+}
+
 
 .restaurant {
     vertical-align: middle;
@@ -94,19 +58,27 @@ span.occasion {
 
 .restaurant .name {
     display: inline-block;
-    width: 600px;
 }
 
 .restaurant .score {
+    padding-right: 25px;
+    float: right;
     display: inline-block;
-    width: 150px;
     text-align: right;
     font-weight: bold;
 }
 
+#new_restaurant input[type='text'], #occasion_form input[type='text'] {
+    height: 25px;
+    width: 400px;
+    border: 2px solid #a9a9a9;
+    border-radius: 5px;
+    font-size: 2em;
+}
+
 .deleter {
+    float: right;
     cursor: pointer;
-    width: 60px;
     text-align: right;
     font-family: Helvetica, sans-serif;
     font-size: 24px;
@@ -120,17 +92,6 @@ span.occasion {
     font-weight: bold;
 }
 
-#outer {
-    width: 850px;
-    margin: 0 auto;
-}
-
-input[type='text'] {
-    border: 2px solid #a9a9a9;
-    border-radius: 5px;
-    font-size: 2em;
-}
-
 input.typeover {
     border: 2px solid #a9a9a9;
     color: #ddd;
@@ -140,32 +101,17 @@ input.typeover.typed {
     color: black;
 }
 
-input[type='button'] {
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 5px;
-    font-size: 20pt;
-    color: white;
-
-    background: rgb(130, 37, 217); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(130, 37, 217, 1)), color-stop(50%, rgba(142, 70, 214, 1)), color-stop(51%, rgba(107, 32, 188, 1)), color-stop(71%, rgba(110, 37, 187, 1)), color-stop(100%, rgba(108, 45, 185, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(130, 37, 217, 1) 0%, rgba(142, 70, 214, 1) 50%, rgba(107, 32, 188, 1) 51%, rgba(110, 37, 187, 1) 71%, rgba(108, 45, 185, 1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#8225d9', endColorstr = '#6c2db9', GradientType = 0); /* IE6-9 */
+.voting, .none {
+    font-weight: bold;
+    font-size: 2em;
+    border: 4px none #ccc;
+    border-top-style: dashed;
+    margin: 50px 10px;
+    padding: 10px 0;
 }
 
-#admin input[type='button'] {
-    background: rgb(248, 80, 50); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(248, 80, 50, 1)), color-stop(50%, rgba(241, 111, 92, 1)), color-stop(51%, rgba(246, 41, 12, 1)), color-stop(71%, rgba(240, 47, 23, 1)), color-stop(100%, rgba(231, 56, 39, 1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(248, 80, 50, 1) 0%, rgba(241, 111, 92, 1) 50%, rgba(246, 41, 12, 1) 51%, rgba(240, 47, 23, 1) 71%, rgba(231, 56, 39, 1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#f85032', endColorstr = '#e73827', GradientType = 0); /* IE6-9 */
+.voting fieldset {
+    margin-top: 15px;
 }
 
 #admin {
@@ -176,14 +122,62 @@ input[type='button'] {
     text-align: right;
 }
 
-.details, .none {
-    font-weight: bold;
-    font-size: 2em;
-    border: 4px none #ccc;
-    border-top-style: dashed;
-    margin: 50px 10px;
-    padding: 10px 0;
+
+
+#occasion_form input[type='text'] {
+    width: 300px;
 }
+
+#occasion_form {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 150px;
+    margin: auto;
+    text-align: center;
+    height: 75px;
+    width: 400px;
+}
+
+#occasion_form .input {
+    border: 5px solid #add8e6;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+#occasion_form .title {
+    margin-bottom: 10px;
+    font-family: Georgia, serif;
+    font-size: 4.5em;
+    color: #add8e6;
+}
+
+
+span.occasion {
+    font-style: italic;
+}
+
+
+/*
+
+
+.help {
+    color: #ccc;
+}
+
+
+#outer {
+    width: 850px;
+    margin: 0 auto;
+}
+
+input[type='button'] {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    font-size: 20pt;
+    color: white;
+
 
 .clear {
     margin: 50px 10px;
@@ -197,3 +191,5 @@ input[type='button'] {
 .inc {
     cursor: pointer;
 }
+
+*/
