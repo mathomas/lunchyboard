@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -12,14 +11,11 @@ body {
     text-decoration: underline;
     text-align: right;
 }
-
-
 .share.clicked {
     color: #aaa;
     text-decoration: none;
     cursor: text;
 }
-
 .share input[type='text'] {
     font-size: .80em;
 }
@@ -28,18 +24,17 @@ body {
 h1, h2 {
     font-family: Georgia, serif;
 }
-
 h1 {
     color: #add8e6;
     font-size: 62pt;
     margin-bottom: .25em;
 }
-
 h2 {
     color: #00008b;
     font-size: 26pt;
     margin-top: 0;
 }
+
 
 
 .restaurant {
@@ -76,6 +71,7 @@ h2 {
     font-size: 2em;
 }
 
+
 .deleter {
     float: right;
     cursor: pointer;
@@ -87,19 +83,19 @@ h2 {
     color: #999;
     padding-bottom: 10px;
 }
-
 .deleter:hover {
     font-weight: bold;
 }
+
 
 input.typeover {
     border: 2px solid #a9a9a9;
     color: #ddd;
 }
-
 input.typeover.typed {
     color: black;
 }
+
 
 .voting, .prompt {
     font-weight: bold;
@@ -109,10 +105,11 @@ input.typeover.typed {
     margin: 50px 10px;
     padding: 10px 0;
 }
-
 .voting fieldset {
     margin-top: 15px;
 }
+
+
 
 #admin {
     border-radius: 5px;
@@ -121,7 +118,6 @@ input.typeover.typed {
     padding: 10px 10px;
     text-align: right;
 }
-
 
 
 #occasion_form input[type='text'] {
@@ -165,31 +161,3 @@ span.occasion {
     color: #777;
 }
 
-
-/*
-
-
-
-#outer {
-    width: 850px;
-    margin: 0 auto;
-}
-
-input[type='button'] {
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 5px;
-    font-size: 20pt;
-    color: white;
-
-
-.clear {
-    margin: 50px 10px;
-    padding: 10px 0;
-}
-
-.inc {
-    cursor: pointer;
-}
-
-*/
