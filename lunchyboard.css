@@ -36,7 +36,6 @@ h2 {
 }
 
 
-
 .restaurant {
     vertical-align: middle;
     font-size: 2em;
@@ -55,36 +54,36 @@ h2 {
     display: inline-block;
 }
 
-.restaurant .score {
-    padding-right: 25px;
+.restaurant .score, .restaurant .deleter {
     float: right;
     display: inline-block;
     text-align: right;
+}
+
+.restaurant .score {
+    padding-right: 25px;
     font-weight: bold;
 }
 
+.restaurant .deleter {
+    font-family: Helvetica, sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    padding-bottom: 5px;
+}
+.restaurant .deleter:hover {
+    font-weight: bold;
+}
+
+
 #new_restaurant input[type='text'], #occasion_form input[type='text'] {
+    margin-top: 5px;
     height: 25px;
     width: 400px;
     border: 2px solid #a9a9a9;
     border-radius: 5px;
     font-size: 2em;
-}
-
-
-.deleter {
-    float: right;
-    cursor: pointer;
-    text-align: right;
-    font-family: Helvetica, sans-serif;
-    font-size: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    color: #999;
-    padding-bottom: 10px;
-}
-.deleter:hover {
-    font-weight: bold;
 }
 
 
@@ -110,7 +109,6 @@ input.typeover.typed {
 }
 
 
-
 #admin {
     border-radius: 5px;
     background-color: #e4e4e4;
@@ -120,27 +118,18 @@ input.typeover.typed {
 }
 
 
+#occasion_form {
+    margin-top: 200px;
+    text-align: center;
+}
 #occasion_form input[type='text'] {
     width: 300px;
 }
-
-#occasion_form {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: 150px;
-    margin: auto;
-    text-align: center;
-    height: 75px;
-    width: 400px;
-}
-
-#occasion_form .input {
+#occasion_form .occasion {
     border: 5px solid #add8e6;
     border-radius: 15px;
     padding: 15px;
 }
-
 #occasion_form .title {
     margin-bottom: 10px;
     font-family: Georgia, serif;
