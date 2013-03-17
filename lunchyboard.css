@@ -2,6 +2,8 @@ body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.btn-group { width: 100%; }
+.onethird { width: 33.4% !important; }
 
 .share {
     font-weight: bold;
@@ -112,7 +114,7 @@ input.typeover.typed {
 #admin {
     border-radius: 5px;
     background-color: #e4e4e4;
-    margin: 150px 10px;
+    margin-top: 150px;
     padding: 10px 10px;
     text-align: right;
 }
